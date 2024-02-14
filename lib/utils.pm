@@ -33,7 +33,7 @@ sub handle_gui_password {
 }
 
 sub wait_for_desktop {
-    assert_screen([qw/boot-menu openqa-desktop/]);
+    assert_screen([qw/boot-menu openqa-desktop/], 500);
     send_key 'ret' if match_has_tag('boot-menu');
     for (1..3) {
         assert_screen 'openqa-desktop', 500;
