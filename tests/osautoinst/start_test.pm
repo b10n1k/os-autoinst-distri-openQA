@@ -36,6 +36,8 @@ sub example_run {
     my $casedir = 'https://github.com/os-autoinst/os-autoinst-distri-example.git';
     my $needlesdir = '%%CASEDIR%%/needles';
     assert_script_run 'wget https://raw.githubusercontent.com/os-autoinst/os-autoinst-distri-example/main/scenario-definitions.yaml';
+    assert_script_run 'file -bi scenario-definitions.yaml';
+    assert_script_run 'cat scenario-definitions.yaml';
     assert_script_run "openqa-cli schedule --param-file SCENARIO_DEFINITIONS_YAML=scenario-definitions.yaml DISTRI=example VERSION=0 FLAVOR=DVD ARCH=$arch TEST=simple_boot _GROUP_ID=0 BUILD=test CASEDIR=$casedir NEEDLES_DIR=$needlesdir";
 
 }
